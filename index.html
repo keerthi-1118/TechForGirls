@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech for Girls - Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #b16cea 0%, #ff5e69 50%, #00c6fb 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+
+        .landing {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .landing-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 0.1em;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #6ee7ff 0%, #b16cea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            overflow: hidden;
+            animation: shine 2.5s infinite linear;
+            padding-bottom: 30px;
+        }
+
+        @keyframes shine {
+            0% { filter: brightness(1) drop-shadow(0 0 0px #fff); }
+            50% { filter: brightness(1.25) drop-shadow(0 0 16px #fff8); }
+            100% { filter: brightness(1) drop-shadow(0 0 0px #fff); }
+        }
+
+        .landing-subtitle {
+            font-size: 1.7em;
+            font-weight: 400;
+            margin-bottom: 1.5em;
+            color: #e0e0e0;
+        }
+
+        .landing-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5em;
+            margin-bottom: 2.5em;
+            font-size: 1.3em;
+        }
+
+        .landing-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .join-btn {
+            background: linear-gradient(90deg, #6ee7ff 0%, #b16cea 100%);
+            color: #fff;
+            border: none;
+            padding: 22px 48px;
+            border-radius: 16px;
+            font-size: 1.5em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1.5em;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            transition: box-shadow 0.3s;
+            animation: jump 1.2s infinite alternate cubic-bezier(.5,0,.5,1);
+        }
+
+        @keyframes jump {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-18px); }
+        }
+
+        .container {
+            background: linear-gradient(135deg, rgba(177,108,234,0.95) 0%, rgba(255,94,105,0.93) 50%, rgba(0,198,251,0.93) 100%);
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.13);
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto 0 auto;
+            animation: fadeIn 0.8s ease-in-out;
+            display: none;
+        }
+
+        .container.show {
+            display: block;
+            animation: slideDown 0.7s cubic-bezier(.5,0,.5,1);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #160828;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
+            background-clip: initial;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding-right: 20px;
+        }
+
+        .header p {
+            color: #34234a;
+            font-size: 1.1em;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        input[type="file"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0c8;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(.4,0,.2,1);
+            background: #f9f9f9c1;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #130257;
+            background: #ffffffc0;
+            box-shadow: 0 0 0 4px rgba(143, 60, 255, 0.25), 0 0 12px 2px #8f3cff44;
+        }
+
+        .whatsapp-section {
+            background: #f0f8ffa8;
+            padding: 12px;
+            border-radius: 15px;
+            margin-bottom: 16px;
+            border: 2px solid #e6f3ff;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .whatsapp-btn:hover:not(:disabled) {
+            background: #128c7e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .counter {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .sharing-status {
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .sharing-complete {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-upload-btn {
+            background: #f8f9fabb;
+            border: 2px dashed #dee2e6;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: block;
+        }
+
+        .file-upload-btn:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+
+        .file-selected {
+            background: #e8f5e8;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, #8f3cff 0%, #ff5e69 100%);
+            color: #080923;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.25em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s cubic-bezier(.4,0,.2,1), background 0.18s cubic-bezier(.4,0,.2,1);
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 4px 16px 0 rgba(143,60,255,0.10);
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: scale(1.045);
+            box-shadow: 0 8px 32px 0 rgba(143,60,255,0.18), 0 0 0 4px #ff5e6940;
+            background: linear-gradient(90deg, #ff5e69 0%, #8f3cff 100%);
+        }
+
+        .submit-btn:disabled {
+            background: linear-gradient(90deg, #8f3cff 0%, #ff5e69 100%);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            border: 2px solid #c3e6cb;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .form-disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            .landing-title { font-size: 2.2em; }
+            .container { padding: 12px; margin: 10px auto 0 auto; }
+            .landing-icons { gap: 1em; font-size: 1em; }
+            .join-btn { font-size: 1em; padding: 14px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing">
+        <div class="landing-title">Tech for Girls</div>
+        <div class="landing-subtitle">Empowering women to break barriers, build futures, and lead the tech revolution</div>
+        <div class="landing-icons">
+            <span class="landing-icon">👥 Community</span>
+            <span class="landing-icon">&lt;/&gt; Innovation</span>
+            <span class="landing-icon">⚡ Empowerment</span>
+        </div>
+        <button class="join-btn" id="joinBtn">Join Our Community</button>
+    </div>
+    <div class="container" id="formContainer">
+        <div class="header">
+            <h1>🚀 Tech for Girls</h1>
+            <p>Join our empowering tech community!</p>
+        </div>
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="college">College Name & Department *</label>
+                <input type="text" id="college" name="college" required>
+            </div>
+
+            <div class="whatsapp-section">
+                <div class="counter">Share Count: <span id="shareCount">0</span>/5</div>
+                <button type="button" id="whatsappBtn" class="whatsapp-btn">
+                    📱 Share on WhatsApp
+                </button>
+                <div id="sharingStatus"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="screenshot">Upload Screenshot (Resume/Photo) *</label>
+                <div class="file-upload">
+                    <input type="file" id="screenshot" name="screenshot" accept="image/*,.pdf" required>
+                    <label for="screenshot" class="file-upload-btn" id="fileUploadBtn">
+                        📁 Click to upload file<br>
+                        <small>Supported: Images, PDF</small>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                Submit Registration
+            </button>
+        </form>
+
+        <div id="successMessage" class="success-message" style="display: none;">
+            🎉 Your submission has been recorded. Thanks for being part of Tech for Girls!
+        </div>
+    </div>
+
+    <script>
+        // Show form on join button click
+        document.getElementById('joinBtn').addEventListener('click', function() {
+            document.querySelector('.landing').style.display = 'none';
+            document.getElementById('formContainer').classList.add('show');
+        });
+
+        // Check if user has already submitted
+        if (localStorage.getItem('techForGirlsSubmitted') === 'true') {
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('successMessage').innerHTML = '✅ You have already submitted your registration!';
+            document.querySelector('.landing').style.display = 'none';
+            document.getElementById('formContainer').classList.add('show');
+        }
+
+        let shareCount = 0;
+        const maxShares = 5;
+
+        // WhatsApp sharing functionality
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const message = encodeURIComponent("Hey Buddy, Join Tech For Girls Community! 🚀");
+            const whatsappUrl = `https://wa.me/?text=${message}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Increment counter
+            shareCount++;
+            document.getElementById('shareCount').textContent = shareCount;
+            
+            // Check if sharing is complete
+            if (shareCount >= maxShares) {
+                document.getElementById('whatsappBtn').disabled = true;
+                document.getElementById('whatsappBtn').textContent = '✅ Sharing Complete';
+                document.getElementById('sharingStatus').innerHTML = '<div class="sharing-complete">Sharing complete. Please continue.</div>';
+                checkFormValidity();
+            }
+        });
+
+        // File upload handling
+        document.getElementById('screenshot').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const uploadBtn = document.getElementById('fileUploadBtn');
+            
+            if (file) {
+                uploadBtn.textContent = `✅ ${file.name}`;
+                uploadBtn.classList.add('file-selected');
+            } else {
+                uploadBtn.innerHTML = '📁 Click to upload file<br><small>Supported: Images, PDF</small>';
+                uploadBtn.classList.remove('file-selected');
+            }
+            checkFormValidity();
+        });
+
+        // Form validation
+        function checkFormValidity() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const college = document.getElementById('college').value.trim();
+            const screenshot = document.getElementById('screenshot').files[0];
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (name && phone && email && college && screenshot && shareCount >= maxShares) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+        // Add event listeners to form fields
+        ['name', 'phone', 'email', 'college'].forEach(id => {
+            document.getElementById(id).addEventListener('input', checkFormValidity);
+            document.getElementById(id).addEventListener('change', checkFormValidity);
+        });
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if sharing is complete
+            if (shareCount < maxShares) {
+                alert('Please complete WhatsApp sharing (5/5) before submitting.');
+                return;
+            }
+            
+            // Collect form data
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('phone', document.getElementById('phone').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('college', document.getElementById('college').value);
+            formData.append('screenshot', document.getElementById('screenshot').files[0]);
+            formData.append('timestamp', new Date().toISOString());
+            
+            // Simulate submission (replace with actual Google Sheets integration)
+            submitToGoogleSheets(formData);
+        });
+        
+        function submitToGoogleSheets(formData) {
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+
+    // Convert FormData to URL-encoded string
+    const data = new URLSearchParams();
+    for (const pair of formData.entries()) {
+        data.append(pair[0], pair[1]);
+    }
+
+    fetch('https://script.google.com/macros/s/AKfycbz0NmH_4kNT6czXtX1nUMsKJvKIWLlf-_Q52ZRbBjz6OdwbPUWImKcGIp54QqRs6d_k/exec', { // <-- Replace with your actual URL
+        method: 'POST',
+        body: data,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then(response => response.text())
+    .then(result => {
+        localStorage.setItem('techForGirlsSubmitted', 'true');
+        document.getElementById('registrationForm').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+    })
+    .catch(error => {
+        alert('There was an error submitting your form. Please try again.');
+        submitBtn.textContent = 'Submit Registration';
+        submitBtn.disabled = false;
+    });
+}
+      
+    </script>
+</body>
+</html>
