@@ -429,7 +429,8 @@
 
         // WhatsApp sharing functionality
         document.getElementById('whatsappBtn').addEventListener('click', function() {
-            const message = encodeURIComponent("Hey Buddy, Join Tech For Girls Community! 🚀");
+            const projectUrl = "https://keerthi-1118.github.io/TechForGirls/";
+            const message = encodeURIComponent("Hey Buddy, Join Tech For Girls Community! 🚀\n"+ projectUrl);
             const whatsappUrl = `https://wa.me/?text=${message}`;
             
             // Open WhatsApp
